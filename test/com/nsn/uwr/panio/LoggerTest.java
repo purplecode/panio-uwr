@@ -21,7 +21,7 @@ public class LoggerTest {
 	@Test
 	public void shouldPrintSomething() {
 		Logger loggerUnderTest = new Logger();
-		loggerUnderTest.loggMessage("My message", ELoggLevel.INFO);
+		loggerUnderTest.loggMessage(ELoggLevel.INFO, "My message");
 
 	};
 

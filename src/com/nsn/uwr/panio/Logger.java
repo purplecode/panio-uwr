@@ -4,7 +4,7 @@ import java.text.DateFormat;
 
 public class Logger {
 	
-	public void loggMessage(String message, ELoggLevel loglevel  ){
+	public void loggMessage(ELoggLevel loglevel, String message  ){
 		
 		DateFormat datetimeFormatter = DateFormat.getDateTimeInstance();
 		
