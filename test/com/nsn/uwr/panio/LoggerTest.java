@@ -25,11 +25,13 @@ public class LoggerTest {
 	public void shouldPrintInfo() {
 		// given
 		Logger loggerUnderTest = new Logger();
+
 		ELoggLevel loglevel = ELoggLevel.INFO;
 		String message = "My message";
 
 		// when
-		loggerUnderTest.loggMessage(loglevel, message);
+		loggerUnderTest.loggMessage(message,loglevel);
+
 
 		// then
 		String trimedlog = byteArrayOutputStream.toString().trim();
