@@ -15,10 +15,12 @@ public class LoggerTest extends AbstractScreenCapturingTest {
 		 initCapture();		
 	};
 
+	private Logger loggerUnderTest = Logger.getInstance();
+	
 	@Test
 	public void shouldPrintInfo() {
 		// given
-		Logger loggerUnderTest = new Logger();
+		
 
 		ELogLevel loglevel = ELogLevel.INFO;
 		String message = "My message";
@@ -36,7 +38,7 @@ public class LoggerTest extends AbstractScreenCapturingTest {
 	@Test
 	public void shouldPrintWarning() {
 		// given
-		Logger loggerUnderTest = new Logger();
+
 
 		ELogLevel loglevel = ELogLevel.WARNING;
 		String message = "My warning";
@@ -54,7 +56,7 @@ public class LoggerTest extends AbstractScreenCapturingTest {
 	@Test
 	public void shouldPrintError() {
 		// given
-		Logger loggerUnderTest = new Logger();
+
 
 		ELogLevel loglevel = ELogLevel.ERROR;
 		String message = "My error";

@@ -5,9 +5,20 @@ import java.text.DateFormat;
 
 public class Logger {
 
-	
-	private PrintStream loggerOutputStream=System.out;
-	
+	private static Logger instance;
+
+	public static Logger getInstance() {
+		if (instance == null) {
+			instance = new Logger();
+		}
+		return instance;
+	}
+
+	private Logger() {
+	}
+
+	private PrintStream loggerOutputStream = System.out;
+
 	public void logMessage(String message, ELogLevel loglevel) {
 
 		DateFormat datetimeFormatter = DateFormat.getDateTimeInstance();
@@ -18,7 +29,6 @@ public class Logger {
 		System.out.println(loglevel + " [" + dateString + "] " + message);
 
 	};
-	
 
 	public void logWarning(String message) {
 
