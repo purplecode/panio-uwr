@@ -1,9 +1,13 @@
 package com.nsn.uwr.panio.logger;
 
+import java.io.PrintStream;
 import java.text.DateFormat;
 
 public class Logger {
 
+	
+	private PrintStream loggerOutputStream=System.out;
+	
 	public void logMessage(String message, ELogLevel loglevel) {
 
 		DateFormat datetimeFormatter = DateFormat.getDateTimeInstance();
@@ -14,6 +18,7 @@ public class Logger {
 		System.out.println(loglevel + " [" + dateString + "] " + message);
 
 	};
+	
 
 	public void logWarning(String message) {
 
