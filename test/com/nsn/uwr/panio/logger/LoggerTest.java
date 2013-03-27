@@ -1,40 +1,37 @@
 package com.nsn.uwr.panio.logger;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LoggerTest {
+import com.nsn.uwr.panio.AbstractScreenCapturingTest;
 
-	private ByteArrayOutputStream byteArrayOutputStream;
+public class LoggerTest extends AbstractScreenCapturingTest {
+
 
 	@Before
 	public void setupLog() {
-		byteArrayOutputStream = new ByteArrayOutputStream();
-		PrintStream testStream = new PrintStream(byteArrayOutputStream);
-		System.setOut(testStream);
-
+		 initCapture();		
 	};
 
 	@Test
 	public void shouldPrintInfo() {
 		// given
-		Logger logerUnderTest = new Logger();
+		Logger loggerUnderTest = new Logger();
 
 		ELogLevel loglevel = ELogLevel.INFO;
 		String message = "My message";
 
 		// when
-		logerUnderTest.logMessage(message,loglevel);
+		loggerUnderTest.logMessage(message,loglevel);
 
 
 		// then
-		String trimedlog = byteArrayOutputStream.toString().trim();
+		String trimedlog = getCapture().trim();
 		Assertions.assertThat(trimedlog).endsWith(message);
 		Assertions.assertThat(trimedlog).contains(loglevel.toString());
+		
 	};
 
 }

@@ -12,7 +12,7 @@ public class Logger {
 		java.util.Date date = new java.util.Date();
 		String dateString = datetimeFormatter.format(date);
 
-		System.out.println("[] " + dateString + " [" + loglevel + "] "
+		System.out.println("[" + dateString + "]" + " [" + loglevel + "] "
 				+ message);
 
 	};

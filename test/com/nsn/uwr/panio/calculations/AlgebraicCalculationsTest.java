@@ -49,7 +49,7 @@ public class AlgebraicCalculationsTest {
 		double res = algebraicCalculations.invoke(functionInput);
 
 		// then
-		Assert.assertEquals(4, res);
+		Assert.assertEquals(4.0, res);
 
 	}
 	
