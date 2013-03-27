@@ -8,11 +8,10 @@ public class ArgumentsParser {
 	}
 
 	public FunctionInput parse(String[] args) {
-		FunctionInput fu = new FunctionInput();
-		fu.setArg1(parseNumericArgument(args[0]));
-		fu.setArg2(parseNumericArgument(args[1]));
-		fu.setOperand(args[2].charAt(0));
-		return fu;
+		double arg1 = parseNumericArgument(args[0]);
+		double arg2 = parseNumericArgument(args[1]);
+		EOperand operand = EOperand.match(args[2].charAt(0));
+		return new FunctionInput(arg1, arg2, operand);
 	}
 
 }
