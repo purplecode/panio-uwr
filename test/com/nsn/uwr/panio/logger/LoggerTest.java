@@ -3,10 +3,9 @@ package com.nsn.uwr.panio.logger;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.nsn.uwr.panio.logger.Logger;
 
 public class LoggerTest {
 
@@ -21,10 +20,21 @@ public class LoggerTest {
 	};
 
 	@Test
-	public void shouldPrintSomething() {
-		Logger loggerUnderTest = new Logger();
-		loggerUnderTest.logMessage("My message", ELogLevel.INFO);
+	public void shouldPrintInfo() {
+		// given
+		Logger logerUnderTest = new Logger();
 
+		ELogLevel loglevel = ELogLevel.INFO;
+		String message = "My message";
+
+		// when
+		logerUnderTest.logMessage(message,loglevel);
+
+
+		// then
+		String trimedlog = byteArrayOutputStream.toString().trim();
+		Assertions.assertThat(trimedlog).endsWith(message);
+		Assertions.assertThat(trimedlog).contains(loglevel.toString());
 	};
 
 }
