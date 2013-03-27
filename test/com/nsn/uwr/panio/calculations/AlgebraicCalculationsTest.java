@@ -1,12 +1,11 @@
 package com.nsn.uwr.panio.calculations;
 
-import org.junit.Ignore;
+import junit.framework.Assert;
+
 import org.junit.Test;
 
 import com.nsn.uwr.panio.inputsparser.EOperand;
 import com.nsn.uwr.panio.inputsparser.FunctionInput;
-
-import junit.framework.Assert;
 
 public class AlgebraicCalculationsTest {
 
