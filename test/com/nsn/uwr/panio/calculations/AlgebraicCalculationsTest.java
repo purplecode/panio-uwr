@@ -27,16 +27,44 @@ public class AlgebraicCalculationsTest {
 	}
 
 	@Test
-	@Ignore
 	public void testShouldSubtract2Double() {
 		// given
 		double x = 2.5, y = 2.0;
-
+		FunctionInput functionInput = new FunctionInput(x, y, EOperand.SUBTRACT);
+		
 		// when
-		//double res = algebraicCalculations.subtract(x, y);
+		double res = algebraicCalculations.invoke(functionInput);
 
 		// then
-		//Assert.assertEquals(0.5, res);
+		Assert.assertEquals(0.5, res);
+
+	}
+	
+	@Test
+	public void testShouldMultiply2Double() {
+		// given
+		double x = 2.0, y = 2.0;
+		FunctionInput functionInput = new FunctionInput(x, y, EOperand.MULTIPLY);
+		
+		// when
+		double res = algebraicCalculations.invoke(functionInput);
+
+		// then
+		Assert.assertEquals(4, res);
+
+	}
+	
+	@Test
+	public void testShouldDivide2Double() {
+		// given
+		double x = 4.0, y = 2.0;
+		FunctionInput functionInput = new FunctionInput(x, y, EOperand.DIVIDE);
+		
+		// when
+		double res = algebraicCalculations.invoke(functionInput);
+
+		// then
+		Assert.assertEquals(2.0, res);
 
 	}
 }

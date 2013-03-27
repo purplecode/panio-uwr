@@ -25,7 +25,7 @@ public class ArgumentsParserTest {
 		// then
 		Assert.assertEquals(1.5, result.getArg1());
 		Assert.assertEquals(2.5, result.getArg2());
-		Assert.assertEquals('+', result.getOperand());
+		Assert.assertEquals(EOperand.ADD, result.getOperand());
 	}
 
 }
