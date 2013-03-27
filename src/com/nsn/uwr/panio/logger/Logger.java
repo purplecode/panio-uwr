@@ -2,7 +2,6 @@ package com.nsn.uwr.panio.logger;
 
 import java.text.DateFormat;
 
-
 public class Logger {
 
 	public void logMessage(String message, ELogLevel loglevel) {
@@ -12,8 +11,7 @@ public class Logger {
 		java.util.Date date = new java.util.Date();
 		String dateString = datetimeFormatter.format(date);
 
-		System.out.println("[" + dateString + "]" + " [" + loglevel + "] "
-				+ message);
+		System.out.println(loglevel + " [" + dateString + "] " + message);
 
 	};
 

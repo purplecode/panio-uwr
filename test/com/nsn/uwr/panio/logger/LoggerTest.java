@@ -33,5 +33,41 @@ public class LoggerTest extends AbstractScreenCapturingTest {
 		Assertions.assertThat(trimedlog).contains(loglevel.toString());
 		
 	};
+	@Test
+	public void shouldPrintWarning() {
+		// given
+		Logger loggerUnderTest = new Logger();
+
+		ELogLevel loglevel = ELogLevel.WARNING;
+		String message = "My warning";
+
+		// when
+		loggerUnderTest.logMessage(message,loglevel);
+
+
+		// then
+		String trimedlog = getCapture().trim();
+		Assertions.assertThat(trimedlog).endsWith(message);
+		Assertions.assertThat(trimedlog).contains(loglevel.toString());
+		
+	};
+	@Test
+	public void shouldPrintError() {
+		// given
+		Logger loggerUnderTest = new Logger();
+
+		ELogLevel loglevel = ELogLevel.ERROR;
+		String message = "My error";
+
+		// when
+		loggerUnderTest.logMessage(message,loglevel);
+
+
+		// then
+		String trimedlog = getCapture().trim();
+		Assertions.assertThat(trimedlog).endsWith(message);
+		Assertions.assertThat(trimedlog).contains(loglevel.toString());
+		
+	};
 
 }
