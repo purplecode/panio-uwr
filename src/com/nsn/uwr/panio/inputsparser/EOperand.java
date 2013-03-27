@@ -9,6 +9,12 @@ public enum EOperand {
 		this.operand = operand;
 	}
 	
-
+	public static EOperand match(char c){
+		for ( EOperand operand : EOperand.values() ){
+			if (c == operand.operand)
+				return operand;
+		}
+		throw new IllegalArgumentException("no matching operand found");	
+	}
 
 }

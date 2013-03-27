@@ -11,13 +11,23 @@ import com.nsn.uwr.panio.inputsparser.FunctionInput;
 public class AlgebraicCalculations {
 
 	@Function(EOperand.ADD)
-	private double add(double arg1, double arg2) {
+	public double add(double arg1, double arg2) {
 		return arg1 + arg2;
 	}
 
 	@Function(EOperand.SUBTRACT)
-	private double subtract(double arg1, double arg2) {
+	public double subtract(double arg1, double arg2) {
 		return arg1 - arg2;
+	}
+	
+	@Function(EOperand.MULTIPLY)
+	public double multiply(double arg1, double arg2) {
+		return arg1 * arg2;
+	}
+	
+	@Function(EOperand.DIVIDE)
+	public double divide(double arg1, double arg2) {
+		return arg1 / arg2;
 	}
 
 	public double invoke(FunctionInput input) {
