@@ -1,7 +1,5 @@
 package com.nsn.uwr.panio;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import org.fest.assertions.Assertions;
 import org.junit.Before;
