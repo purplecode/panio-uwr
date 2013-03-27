@@ -13,5 +13,4 @@ public class ArgumentsParser {
 		EOperand operand = EOperand.match(args[2].charAt(0));
 		return new FunctionInput(arg1, arg2, operand);
 	}
-
 }
