@@ -14,7 +14,7 @@ public enum EOperand {
 			if (c == operand.operand)
 				return operand;
 		}
-		throw new IllegalArgumentException("no matching operand found");	
+		throw new IllegalArgumentException("no matching operand found");
 	}
 
 }

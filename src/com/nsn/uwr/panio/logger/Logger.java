@@ -2,22 +2,49 @@ package com.nsn.uwr.panio.logger;
 
 import java.io.PrintStream;
 import java.text.DateFormat;
+import java.util.Properties;
 
-public class Logger {
+public abstract class Logger {
+
+	private enum LoggerType {
+
+		FILE(FileLogger.class), CONSOLE(ConsoleLogger.class);
+
+		private final Class<? extends Logger> loggerClass;
+
+		private LoggerType(Class<? extends Logger> loggerClass) {
+			this.loggerClass = loggerClass;
+		}
+
+		public Class<? extends Logger> getLoggerClass() {
+			return loggerClass;
+		}
+	};
 
 	private static Logger instance;
 
 	public static Logger getInstance() {
 		if (instance == null) {
-			instance = new Logger();
+
+			Properties properties = new Properties();
+			try {
+				properties.load(Logger.class
+						.getResourceAsStream("/logger.properties"));
+			String property = properties.getProperty("Logger.Type");
+
+			LoggerType loggerType = LoggerType.valueOf(property);
+
+			instance = loggerType.getLoggerClass().newInstance();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				instance = new ConsoleLogger();
+				
+			} 
 		}
 		return instance;
 	}
 
-	private Logger() {
-	}
-
-	private PrintStream loggerOutputStream = System.out;
+	protected abstract PrintStream getOutputStream();
 
 	public void logMessage(String message, ELogLevel loglevel) {
 
@@ -26,7 +53,9 @@ public class Logger {
 		java.util.Date date = new java.util.Date();
 		String dateString = datetimeFormatter.format(date);
 
-		System.out.println(loglevel + " [" + dateString + "] " + message);
+		// System.out.println(loglevel + " [" + dateString + "] " + message);
+		this.getOutputStream().println(
+				loglevel + " [" + dateString + "] " + message);
 
 	};
 
