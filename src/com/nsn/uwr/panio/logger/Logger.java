@@ -36,7 +36,6 @@ public abstract class Logger {
 
 			instance = loggerType.getLoggerClass().newInstance();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				instance = new ConsoleLogger();
 				
 			} 
@@ -53,7 +52,6 @@ public abstract class Logger {
 		java.util.Date date = new java.util.Date();
 		String dateString = datetimeFormatter.format(date);
 
-		// System.out.println(loglevel + " [" + dateString + "] " + message);
 		this.getOutputStream().println(
 				loglevel + " [" + dateString + "] " + message);
 
