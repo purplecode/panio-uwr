@@ -29,4 +29,10 @@ dependencies {
 	)
 }
 
+jar{
+	manifest {
+	attributes("ClassPath": ".", "Main-Class": "com.nsn.uwr.panio.Calculator");
+	}
+}
+
 defaultTasks 'build'
