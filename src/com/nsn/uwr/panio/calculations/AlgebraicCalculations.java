@@ -19,19 +19,18 @@ public class AlgebraicCalculations {
 	public double subtract(double arg1, double arg2) {
 		return arg1 - arg2;
 	}
-	
+
 	@Function(EOperand.MULTIPLY)
 	public double multiply(double arg1, double arg2) {
 		return arg1 * arg2;
 	}
-	
+
 	@Function(EOperand.DIVIDE)
 	public double divide(double arg1, double arg2) {
 		return arg1 / arg2;
 	}
 
 	public double invoke(FunctionInput input) {
-
 		Method method = findSuitableMethod(input);
 		try {
 			return (double) method.invoke(this, input.getArg1(),
@@ -40,20 +39,14 @@ public class AlgebraicCalculations {
 				| InvocationTargetException e) {
 			throw new RuntimeException(e);
 		}
-		
-
 	}
 
 	private Method findSuitableMethod(FunctionInput input) {
-		
+
 		for (Method method : this.getClass().getMethods()) {
 			Function annotation = method.getAnnotation(Function.class);
 			if (annotation != null && annotation.value() == input.getOperand()) {
-				try {
-					return method;
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-				}
+				return method;
 			}
 		}
 		throw new NotImplementedException();
