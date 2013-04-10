@@ -8,7 +8,7 @@ public abstract class Logger {
 
 	private enum LoggerType {
 
-		CONSOLE(ConsoleLogger.class);
+		CONSOLE(ConsoleLogger.class),FILE(FileLogger.class);
 
 		private final Class<? extends Logger> loggerClass;
 
