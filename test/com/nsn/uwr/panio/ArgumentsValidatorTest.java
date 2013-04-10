@@ -2,12 +2,17 @@ package com.nsn.uwr.panio;
 
 import org.fest.assertions.Assertions;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import com.nsn.uwr.panio.inputsparser.EOperand;
 
 
 public class ArgumentsValidatorTest {
+	
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
 	
 	private ArgumentsValidator validatorUnderTest;
 
@@ -56,6 +61,45 @@ public class ArgumentsValidatorTest {
 			//than
 			Assertions.assertThat(validationResult).isTrue();
 		}
-		
 	}
+	
+	@Test
+	public void shouldValidateArguments() {
+		//given
+		String[] args = {"2", "3", "+"};
+		
+		//when
+		validatorUnderTest.validateArguments(args);
+		
+		//then
+		//no exception
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void shouldThrowExceptionOnInvalidSecondArgument() {
+		//given
+		String[] args = {"2", "cv3", "+"};
+		
+		//when
+		validatorUnderTest.validateArguments(args);
+		
+		//then
+		//exception
+	}
+	
+	@Test
+	public void shouldThrowExceptionOnInvalidOperatorArgument() {
+		//given
+		String[] args = {"2", "3", "a"};
+		
+		thrown.expect(IllegalArgumentException.class);
+		thrown.expectMessage("third argument should be operator");
+		
+		//when
+		validatorUnderTest.validateArguments(args);
+		
+		//then
+		// exception
+	}
+	
 }

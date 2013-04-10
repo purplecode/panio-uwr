@@ -15,7 +15,7 @@ public enum EOperand {
 	
 	public static EOperand match(String c){
 		for ( EOperand operand : EOperand.values() ){
-			if (c == operand.operandSymbol)
+			if (c.equals(operand.operandSymbol))
 				return operand;
 		}
 		throw new IllegalArgumentException("no matching operand found");
