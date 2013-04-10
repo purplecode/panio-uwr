@@ -1,6 +1,7 @@
 package com.nsn.uwr.panio;
 
 
+
 import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,6 +19,7 @@ public class LoggerTest extends AbstractScreenCapturingTest {
 
 	@Test
 	public void shouldPrintInfo() {
+		
 		// given
 		Logger loggerUnderTest = Logger.getInstance();
 
