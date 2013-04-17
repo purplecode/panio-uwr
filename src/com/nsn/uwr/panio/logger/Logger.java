@@ -29,7 +29,7 @@ public abstract class Logger {
 			Properties properties = new Properties();
 			try {
 				properties.load(Logger.class
-						.getResourceAsStream("/logger.properties"));
+						.getResourceAsStream("logger.properties"));
 			String property = properties.getProperty("Logger.Type");
 
 			LoggerType loggerType = LoggerType.valueOf(property);
@@ -37,6 +37,7 @@ public abstract class Logger {
 			instance = loggerType.getLoggerClass().newInstance();
 			} catch (Exception e) {
 				instance = new ConsoleLogger();
+				e.printStackTrace();
 				
 			} 
 		}

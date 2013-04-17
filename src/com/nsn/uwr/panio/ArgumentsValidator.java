@@ -2,6 +2,7 @@ package com.nsn.uwr.panio;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.nsn.uwr.panio.inputsparser.EOperand;
+import com.nsn.uwr.panio.logger.Logger;
 
 public class ArgumentsValidator {
 
@@ -35,6 +36,7 @@ public class ArgumentsValidator {
 		try {
 			EOperand.match(item);
 		} catch (IllegalArgumentException e) {
+			Logger.getInstance().logError(e.getMessage());
 			return false;
 		}
 		return true;
