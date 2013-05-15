@@ -1,6 +1,7 @@
 package com.nsn.uwr.panio;
 
 import org.apache.commons.cli.BasicParser;
+
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Option;
@@ -12,8 +13,9 @@ import org.apache.commons.cli.ParseException;
 import com.nsn.uwr.panio.calculations.AlgebraicCalculations;
 import com.nsn.uwr.panio.inputsparser.ArgumentsParser;
 import com.nsn.uwr.panio.inputsparser.FunctionInput;
-import com.nsn.uwr.panio.logger.Logger;
-import com.nsn.uwr.panio.outputhandler.OutputHandler;
+import com.nsn.uwr.panio.logger.*;
+import com.nsn.uwr.panio.outputhandler.ConsoleOutputHandler;
+import com.nsn.uwr.panio.outputhandler.FileOutputHandler;
 
 /**
  * main class for calculator 
@@ -25,6 +27,7 @@ public class Calculator {
 	private static final char INLINE_ARITHMETIC_OPERATION = 'l';
 	private static final char OUTPUT_FILE_OPTION = 'o';
 	private static final char INPUT_FILE_OPTION = 'f';
+	private static FileOutputHandler fileOutputHandler;
 
 	/**
 	 * @param args
@@ -52,7 +55,7 @@ public class Calculator {
 		
 		if(cmd.hasOption(OUTPUT_FILE_OPTION)) {
 			String outputFilename = cmd.getOptionValue('o');
-			// TODO file output handler creation
+			fileOutputHandler = new FileOutputHandler(outputFilename);
 		}
 		if(cmd.hasOption(INLINE_ARITHMETIC_OPERATION)) {
 			ArgumentsValidator argumentsValidator = new ArgumentsValidator();
@@ -62,11 +65,11 @@ public class Calculator {
 			FunctionInput functionInput = argumentsParser.parse(args);
 			AlgebraicCalculations algebraicCalculations = new AlgebraicCalculations();
 			double result = algebraicCalculations.invoke(functionInput);
-			OutputHandler outputHandler = new OutputHandler();
+			ConsoleOutputHandler outputHandler = new ConsoleOutputHandler();
 			outputHandler.resultToStdOut( result );
 		}
 		if(cmd.hasOption(INPUT_FILE_OPTION)) {
-			String inputFilename = cmd.getOptionValue('o');
+			String inputFilename = cmd.getOptionValue('f');
 			// TODO file output handler creation
 		}
 		
