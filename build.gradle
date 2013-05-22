@@ -21,7 +21,8 @@ repositories {
 dependencies {
 	compile (
 		'com.google.guava:guava:13.0.1@jar',
-		'org.mod4j.org.apache.commons:cli:1.0.0'
+		'org.mod4j.org.apache.commons:cli:1.0.0',
+		'org.apache.commons:commons-math3:3.2'
 	)
 	testCompile (
 		'junit:junit:4.10@jar',
