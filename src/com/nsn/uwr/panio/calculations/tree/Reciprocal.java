@@ -1,5 +1,8 @@
 package com.nsn.uwr.panio.calculations.tree;
 
+import com.nsn.uwr.panio.calculations.Function;
+
+@Function("rec")
 public class Reciprocal extends AbstractUnaryFunction {
 
 	public Reciprocal(IValueElement argument) {

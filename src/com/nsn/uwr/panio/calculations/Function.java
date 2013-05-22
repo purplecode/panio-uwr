@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 import com.nsn.uwr.panio.inputsparser.EOperand;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target(ElementType.TYPE)
 public @interface Function {
-	EOperand value();
+	String value();
 }

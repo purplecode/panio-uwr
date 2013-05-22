@@ -1,5 +1,8 @@
 package com.nsn.uwr.panio.calculations.tree;
 
+import com.nsn.uwr.panio.calculations.Function;
+
+@Function("+")
 public class Addittion extends AbstractBinaryFunction {
 
 	public Addittion(IValueElement arg1, IValueElement arg2) {
