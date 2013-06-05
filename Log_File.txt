@@ -1,0 +1,1 @@
+ERROR [2013-06-05 16:29:30] Ó:\folder\test_file.txt (System nie mo¿e odnaleŸæ okreœlonej œcie¿ki)

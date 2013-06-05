@@ -6,6 +6,7 @@ import java.util.List;
 
 import junit.framework.Assert;
 
+import org.fest.assertions.Assertions;
 import org.junit.Test;
 
 import com.google.common.base.Charsets;
@@ -30,19 +31,17 @@ public class FileOutputHandlerTest {
 	}
 	
 	@Test
-	public void shouldWriteToFile() {
+	public void shouldWriteToFile() throws IOException {
 		//given
 			File testFile = new File("test_file");
 			FileOutputHandler fileOutputHandler = new FileOutputHandler(testFile.getPath());
 		//when
 			fileOutputHandler.output("a", 1.3);
+			fileOutputHandler.fileClose();
 		//than
-			try {
 				List<String> lines = Files.readLines(testFile, Charsets.UTF_8);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				Assertions.assertThat(lines).hasSize(1);
+				Assertions.assertThat(lines).containsOnly("a = 1.3");
 		//after
 			testFile.delete();
 			

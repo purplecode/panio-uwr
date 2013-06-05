@@ -1,8 +1,9 @@
 package com.nsn.uwr.panio.calculations.tree;
 
 import com.nsn.uwr.panio.calculations.Function;
+import com.nsn.uwr.panio.inputsparser.EOperand;
 
-@Function("/")
+@Function(EOperand.DIVIDE)
 public class Division extends AbstractBinaryFunction {
 
 	public Division(IValueElement arg1, IValueElement arg2) {

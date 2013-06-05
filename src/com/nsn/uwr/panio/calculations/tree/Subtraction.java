@@ -1,8 +1,9 @@
 package com.nsn.uwr.panio.calculations.tree;
 
 import com.nsn.uwr.panio.calculations.Function;
+import com.nsn.uwr.panio.inputsparser.EOperand;
 
-@Function("-")
+@Function(EOperand.SUBTRACT)
 public class Subtraction extends AbstractBinaryFunction {
 
 	public Subtraction(IValueElement arg1, IValueElement arg2) {
