@@ -9,6 +9,7 @@ import java.util.Set;
 import junit.framework.Assert;
 
 import org.fest.assertions.Assertions;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.scannotation.AnnotationDB;
 import org.scannotation.ClasspathUrlFinder;
@@ -17,6 +18,7 @@ public class TestScannotationLibrary {
 
 
 	@Test
+	@Ignore
 	public void testFindClasspaths2() throws Exception {
 		// given
 		URL[] urls = ClasspathUrlFinder.findClassPaths();

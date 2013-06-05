@@ -7,7 +7,7 @@ import com.nsn.uwr.panio.inputsparser.EOperand;
 public class Subtraction extends AbstractBinaryFunction {
 
 	public Subtraction(IValueElement arg1, IValueElement arg2) {
-		super(arg1, arg1);
+		super(arg1, arg2);
 	}
 
 	@Override
