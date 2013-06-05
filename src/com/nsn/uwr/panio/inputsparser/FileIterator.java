@@ -5,8 +5,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Iterator;
 
-public class FileIterator {
+import com.google.common.base.Throwables;
+
+public class FileIterator implements Iterator<String> {
 
 	private BufferedReader inputReader;
 
@@ -16,8 +19,12 @@ public class FileIterator {
 
 	}
 
-	public String next() throws IOException {
-		return hasNext() ? inputReader.readLine() : null;
+	public String next()  {
+		try {
+			return hasNext() ? inputReader.readLine() : null;
+		} catch (IOException e) {
+				throw Throwables.propagate(e);
+		}
 
 	}
 	
@@ -25,8 +32,18 @@ public class FileIterator {
 		inputReader.close();
 	}
 	
-	public boolean hasNext() throws IOException {
-		return inputReader.ready();
+	public boolean hasNext()  {
+		try {
+			return inputReader.ready();
+		} catch (IOException e) {
+			throw Throwables.propagate(e);
+		}
+	}
+
+	@Override
+	public void remove() {
+		// Nothing to do
+		
 	}
 
 }

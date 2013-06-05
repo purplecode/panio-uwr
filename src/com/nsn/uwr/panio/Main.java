@@ -1,6 +1,9 @@
 package com.nsn.uwr.panio;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
@@ -13,6 +16,7 @@ import com.google.common.collect.Lists;
 import com.nsn.uwr.panio.calculations.AlgebraicCalculations;
 import com.nsn.uwr.panio.inputsparser.ArgumentsParser;
 import com.nsn.uwr.panio.inputsparser.CommandLineParser;
+import com.nsn.uwr.panio.inputsparser.FileIterator;
 import com.nsn.uwr.panio.inputsparser.FunctionInput;
 import com.nsn.uwr.panio.logger.Logger;
 import com.nsn.uwr.panio.outputhandler.OutputHandler;
@@ -33,6 +37,14 @@ public class Main {
 		}
 		if(cmd.hasOption(CommandLineParser.INPUT_FILE_OPTION)) {
 			String inputFilename = cmd.getOptionValue('o');
+			File inputFile=new File(inputFilename);
+			try {
+				FileIterator fileIterator=new FileIterator(inputFile);
+				calculate(fileIterator, outputHandler);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			// TODO file output handler creation
 		}
 	}	
@@ -43,5 +55,6 @@ public class Main {
 		calculator.calculate();
 		
 	}
+
 
 }
